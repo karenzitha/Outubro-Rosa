@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Outubro Rosa - Conscientização sobre o câncer de mama. Prevenção, diagnóstico precoce e apoio. Juntas podemos vencer essa luta!">
+    <title>Outubro Rosa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variáveis de cores */
+        :root {
+            --rosa-claro: #f8d3e0;
+            --rosa-forte: #d5006d;
+            --rosa-pale: #fce4ec;
+            --branco: #fff;
+            --cinza-escuro: #333;
+            --cinza-claro: #555;
+            --sombra: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Resetando margens e padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, var(--rosa-claro), #f5a6c2);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            color: var(--cinza-escuro);
+        }
+
+        header {
+            background-color: var(--rosa-forte);
+            color: var(--branco);
+            padding: 15px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            text-align: center;
+            box-shadow: 0 2px 5px var(--sombra);
+            z-index: 1000;
+        }
+
+        h1 {
+            margin-top: 120px;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        /* Estilo do botão */
+        .button {
+            background-color: var(--rosa-forte);
+            color: var(--branco);
+            border: none;
+            border-radius: 8px;
+            padding: 15px 25px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px var(--sombra);
+        }
+
+        .button:hover {
+            background-color: #a20045;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 8px var(--sombra);
+        }
+
+        /* Container dos botões */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .button-container-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 15px;
+            background-color: var(--rosa-forte);
+            color: var(--branco);
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            box-shadow: 0 -2px 5px var(--sombra);
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 24px;
+            color: var(--rosa-forte);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0s 0.5s;
+            display: block;
+        }
+
+        .fade-in {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease-in-out, visibility 0s;
+        }
+
+        /* Estilo da imagem */
+        .imagem-icone {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px 0;
+            cursor: pointer;
+            position: relative;
+            transition: transform 1s ease-in-out, filter 0.5s ease;
+            border: 8px solid transparent;
+            border-radius: 10px;
+        }
+
+        .imagem-icone.girada {
+            transform: rotateY(180deg);
+            filter: brightness(0.85);
+            border: 8px solid var(--rosa-forte);
+        }
+
+        .image-message {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(102, 12, 83, 0.9);
+            color: var(--branco);
+            font-size: 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px var(--sombra);
+        }
+
+        .show-message {
+            display: flex;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Texto explicativo */
+        .texto-descricao {
+            margin: 40px 0;
+            line-height: 1.6;
+            font-size: 24px;
+            color: var(--cinza-claro);
+            text-align: center;
+            padding: 20px;
+            border: 3px solid var(--rosa-forte);
+            border-radius: 10px;
+            background-color: var(--rosa-pale);
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 10px var(--sombra);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .button {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+
+            .texto-descricao {
+                font-size: 18px;
+            }
+
+            .button-container {
+                flex-direction: column;
+            }
+
+            .button {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>CONSCIENTIZAÇÃO DO CÂNCER DE MAMA</h2>
+    </header>
+
+    <h1>Outubro Rosa – Mês de Conscientização Sobre o Câncer de Mama</h1>
+
+    <!-- Seção com imagem e mensagem -->
+    <section style="position: relative;">
+        <img id="imagem-icone" src="https://s2.glbimg.com/gzGWDrhKBJuidY85Drvcp1ho-Dc=/1200x/smart/filters:cover()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/O/x/BA0EYFR1Azmz2GNV4lYw/outubro-rosa.png"
+            alt="Imagem da campanha Outubro Rosa, simbolizando a luta contra o câncer de mama" class="imagem-icone"
+            onclick="showImageMessage()" aria-label="Clique para saber mais sobre o Outubro Rosa" />
+
+        <div id="image-message" class="image-message">
+            Um toque de cuidado faz toda a diferença. Cuide de você e inspire outras mulheres.
+        </div>
+    </section>
+
+    <!-- Texto explicativo -->
+    <p class="texto-descricao">
+        O Outubro Rosa é uma campanha que visa conscientizar sobre a importância da prevenção e do diagnóstico precoce do câncer de mama.
+        Juntas, podemos vencer essa luta!<br>
+        É possível prevenir ou minimizar seus efeitos fazendo o autoexame (apalpar os seios em busca de alguma alteração) e os exames anuais (exame clínico das mamas ou mamografia) em um posto de saúde.
+    </p>
+
+    <!-- Container dos botões -->
+    <div class="button-container">
+        <div class="button-container-inner">
+            <!-- Botões com suas respectivas frases -->
+            <button class="button" onclick="showMessage('A prevenção é o primeiro passo para a cura!')">A prevenção é o primeiro passo para a cura!</button>
+            <button class="button" onclick="showMessage('O autocuidado é a chave para uma vida saudável!')">O autocuidado é a chave para uma vida saudável!</button>
+            <button class="button" onclick="showMessage('Juntas somos mais fortes na luta contra o câncer!')">Juntas somos mais fortes na luta contra o câncer!</button>
+        </div>
+    </div>
+
+    <!-- Espaço para exibir a mensagem -->
+    <div id="message" class="message"></div>
+
+    <!-- Rodapé com link -->
+    <footer>
+        <p>Saiba mais e compartilhe a causa! 
+           <a href="https://www.gov.br/saude/pt-br/assuntos/noticias/2024/outubro/outubro-rosa-ministerio-da-saude-lanca-campanha-e-reforca-autocuidado" 
+              style="color: var(--branco); text-decoration: underline;" target="_blank" rel="noopener noreferrer">Clique aqui</a>
+        </p>
+    </footer>
+
+    <script>
+        // Função para exibir a mensagem sobre a imagem
+        function showImageMessage() {
+            const imagem = document.getElementById('imagem-icone');
+            const messageElement = document.getElementById('image-message');
+
+            imagem.classList.toggle('girada');
+            messageElement.classList.toggle('show-message');
+        }
+
+        // Função para exibir mensagem ao clicar nos botões
+        function showMessage(message) {
+            const messageElement = document.getElementById('message');
+            
+            // Definir o texto da mensagem
+            messageElement.textContent = message;
+            
+            // Adiciona a classe de fade-in para mostrar a mensagem
+            messageElement.classList.add('fade-in');
+            
+            // Exibe a mensagem após a animação de fade-in
+            messageElement.style.display = 'block';
+
+            // Opcional: remover a classe de fade-in após um tempo, para permitir que a animação aconteça novamente
+            setTimeout(() => {
+                messageElement.classList.remove('fade-in');
+            }, 500); // Tempo necessário para a animação
+        }
+    </script>
+</body>
+
+</html>
